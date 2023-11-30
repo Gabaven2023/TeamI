@@ -5,6 +5,18 @@
   <title>掲示板</title>
 </head>
 <body>
-  <!-- 掲示板のコンテンツ -->
+    <form action="投稿処理のURL" method="post">
+        <label for="name">名前:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="comment">コメント:</label>
+        <textarea name="comment" id="comment"></textarea>
+        <br>
+        <input type="submit" value="投稿">
+      </form>
+      
+      <div id="posts">
+        <!-- 投稿内容の表示部分 -->
+      </div>
 </body>
 </html>
