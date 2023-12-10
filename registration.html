@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="I班" content="" />
+        <title>Blog Home - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/clipboard.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+        <body>
+            <form name="myform" onsubmit="return checkText()">
+            <input type="password" name="PW">
+            <input type="submit" value="ログイン" />
+        </form>
+<!--ここよく分からん-->
+    <script>
+        function checkText() {
+        //*****に、サイトのページ名を入れてください
+        document.myform.action = "https://sites.google.com/view/registration.html/"+ document.myform.PW.value;;
+        }
+    </script>
+    </body>
+</html>

@@ -3618,6 +3618,12 @@ textarea.form-control-lg {
   list-style: none;
 }
 
+.nav::after{
+    content: "/";
+    padding-left: 12px; /* li要素のwidthと調整が必要 */
+    color: #ffffff;
+}
+
 .nav-link {
   display: block;
   padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
