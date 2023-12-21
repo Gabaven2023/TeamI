@@ -244,6 +244,10 @@ sup {
   top: -0.5em;
 }
 
+.btn btn-primary btn-lg {
+  background: #4eb42f;
+}
+
 a {
   color: var(--bs-link-color);
   text-decoration: underline;
