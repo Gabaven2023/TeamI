@@ -11,6 +11,7 @@
             <link rel="icon" type="image/x-icon" href="assets/clipboard.ico" />
             <!-- Core theme CSS (includes Bootstrap)-->
             <link href="css/styles.css" rel="stylesheet" />
+            <link href="css/table.css" rel="stylesheet" />
         </head>
         <body>
             <!-- Responsive navbar-->
@@ -35,6 +36,77 @@
     <div class="main-contents wrapper">
         <article>
             mainarea
+            <div id="filter-container">
+                <label for="filter-course">授業名:</label>
+                <input type="text" id="filter-course" oninput="filterItems()">
+                <label for="filter-professor">先生名:</label>
+                <input type="text" id="filter-professor" oninput="filterItems()">
+                <label for="filter-department">学部:</label>
+                <select id="filter-department" onchange="filterItems()">
+                  <option value="">すべて</option>
+                  <option value="engineering">工学部</option>
+                  <option value="science">理学部</option>
+                  <!-- 他の学部も追加 -->
+                </select>
+                <label for="filter-major">学科:</label>
+                <select id="filter-major" onchange="filterItems()">
+                  <option value="">すべて</option>
+                  <option value="computer-science">コンピュータサイエンス</option>
+                  <option value="physics">物理学</option>
+                  <!-- 他の学科も追加 -->
+                </select>
+              </div>
+              
+              <table id="result-table">
+                <thead>
+                  <tr>
+                    <th>授業名</th>
+                    <th>先生名</th>
+                    <th>学部</th>
+                    <th>学科</th>
+                    <!-- 追加の列があればここに追加 -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-course="Web開発入門" data-professor="田中太郎" data-department="engineering" data-major="computer-science">
+                    <td>Web開発入門</td>
+                    <td>田中太郎</td>
+                    <td>工学部</td>
+                    <td>コンピュータサイエンス</td>
+                  </tr>
+                  <!-- 他の行も追加 -->
+                </tbody>
+              </table>
+              
+              <script>
+                function filterItems() {
+                  var filterCourse = document.getElementById('filter-course').value.toLowerCase();
+                  var filterProfessor = document.getElementById('filter-professor').value.toLowerCase();
+                  var filterDepartment = document.getElementById('filter-department').value.toLowerCase();
+                  var filterMajor = document.getElementById('filter-major').value.toLowerCase();
+                  var rows = document.querySelectorAll('#result-table tbody tr');
+              
+                  rows.forEach(function(row) {
+                    var course = row.getAttribute('data-course').toLowerCase();
+                    var professor = row.getAttribute('data-professor').toLowerCase();
+                    var department = row.getAttribute('data-department').toLowerCase();
+                    var major = row.getAttribute('data-major').toLowerCase();
+              
+                    var courseMatch = course.includes(filterCourse);
+                    var professorMatch = professor.includes(filterProfessor);
+                    var departmentMatch = filterDepartment === '' || department === filterDepartment;
+                    var majorMatch = filterMajor === '' || major === filterMajor;
+              
+                    if (courseMatch && professorMatch && departmentMatch && majorMatch) {
+                      row.style.display = 'table-row';
+                    } else {
+                      row.style.display = 'none';
+                    }
+                  });
+                }
+              </script>
+              
+ 
         </article>
         <aside>
             subarea
