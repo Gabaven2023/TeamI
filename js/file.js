@@ -1,5 +1,5 @@
 // CSVファイルのURL（実際のファイルのURLに変更してください）
-const csvFileUrl = '../TableExport.csv';
+const csvFileUrl = '../project/public/TableExport.csv';
 
 // プルダウンメニューの要素を取得
 const courseSelect = document.getElementById('courseSelect');

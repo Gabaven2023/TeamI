@@ -10882,13 +10882,23 @@ textarea.form-control-lg {
   text-align: center;
 }
 article{
-  width: 74%;
+  width: 76%;
 }
 aside{
-  width: 24%;
+  width: 26%;
+  
 }
 .main-contents{
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+}
+.sub-title{
+  font-size: 1.375rem;
+  padding:0 8px 8px;
+  border-bottom: 2px #0bd solid;
+  font-weight: normal;
+}
+a{
+  text-decoration: none;
 }
