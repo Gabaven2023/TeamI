@@ -24,6 +24,7 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="select.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfGkdylueB0csFbforvs8fNm6fTl6Z_GsuBE022AXkOi0WiRg/viewform?usp=sf_link">投稿</a></li>
                             <button class="btn btn-success" type="submit" onclick="location.href='registration.html'">会員登録/ログイン</button>
                         </ul>
                     </div>
@@ -39,39 +40,55 @@
             mainarea
             
             <body>
-              <h1>データ検索</h1>
-          
-              <label for="courseSelect">授業名:</label>
-              <select id="courseSelect">
-                  <option value="">全て</option>
-                  <!-- 授業名のオプションを動的に生成する -->
-              </select>
-          
-              <label for="teacherSelect">先生名:</label>
-              <select id="teacherSelect">
-                  <option value="">全て</option>
-                  <!-- 先生名のオプションを動的に生成する -->
-              </select>
-          
-              <label for="facultySelect">学部:</label>
-              <select id="facultySelect">
-                  <option value="">全て</option>
-                  <!-- 学部のオプションを動的に生成する -->
-              </select>
-          
-              <label for="departmentSelect">学科:</label>
-              <select id="departmentSelect">
-                  <option value="">全て</option>
-                  <!-- 学科のオプションを動的に生成する -->
-              </select>
-          
-              <button onclick="search()">検索</button>
+
           
               <div id="resultArea"></div>
           
-              <script src="js/file.js"></script>
-          </body>
- 
+              <script src="js/csv.js"></script>
+                
+              <input type="file" id="fileInput" accept=".csv">
+<button onclick="readFile()">Read CSV File</button>
+
+
+<h1>データ検索</h1>
+          
+<label for="courseSelect">授業名:</label>
+<select id="courseSelect">
+    <option value="">全て</option>
+    <!-- 授業名のオプションを動的に生成する -->
+</select>
+
+<label for="teacherSelect">先生名:</label>
+<select id="teacherSelect">
+    <option value="">全て</option>
+    <!-- 先生名のオプションを動的に生成する -->
+</select>
+
+<label for="facultySelect">学部:</label>
+<select id="facultySelect">
+    <option value="">医学部</option>
+    <option value="">教育学部</option>
+    <option value="">経済学部</option>
+    <option value="">芸術地域デザイン学部</option>
+    <option value="">農学部</option>
+    <option value="">理工学部</option>
+    <option value="">その他</option>
+    <!-- 学部のオプションを動的に生成する -->
+</select>
+
+<label for="departmentSelect">学科:</label>
+<select id="departmentSelect">
+    <option value="">全て</option>
+    <!-- 学科のオプションを動的に生成する -->
+</select>
+
+<button onclick="search()">検索</button>
+<script src="js/file.js"></script>
+<h2>CSV Table</h2>
+<table id="csvTable"></table>
+
+
+<script src="./js/csv.js"></script>
         </article>
         <aside>
             <h3 class="sub-title">スポンサーからのお知らせ欄</h3>
