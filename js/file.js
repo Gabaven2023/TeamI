@@ -1,6 +1,24 @@
+function applyFilter() {
+    var filterColumnIndex = parseInt(document.getElementById('filterColumn').value);
+    var filterValue = document.getElementById('filterValue').value.toLowerCase();
+
+    var table = document.getElementById("csvTable");
+    var rows = table.getElementsByTagName('tr');
+
+    for (var i = 1; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName('td');
+        var cellValue = cells[filterColumnIndex].innerHTML.toLowerCase();
+
+        if (cellValue.includes(filterValue)) {
+            rows[i].style.display = ''; // フィルタに合致する場合は表示
+        } else {
+            rows[i].style.display = 'none'; // フィルタに合致しない場合は非表示
+        }
+    }
+}
 
 
-// プルダウンメニューの要素を取得
+/*// プルダウンメニューの要素を取得
 const courseSelect = document.getElementById('courseSelect');
 const teacherSelect = document.getElementById('teacherSelect');
 const facultySelect = document.getElementById('facultySelect');
@@ -84,4 +102,4 @@ function populateDropdownOptions(columnIndex, selectElement) {
 populateDropdownOptions(0, courseSelect); // 0は「授業名」の列のインデックス
 populateDropdownOptions(1, teacherSelect); // 1は「先生名」の列のインデックス
 populateDropdownOptions(2, facultySelect); // 2は「学部」の列のインデックス
-populateDropdownOptions(3, departmentSelect); // 3は「学科」の列のインデックス
+populateDropdownOptions(3, departmentSelect); // 3は「学科」の列のインデックス*/

@@ -66,13 +66,13 @@
 
 <label for="facultySelect">学部:</label>
 <select id="facultySelect">
-    <option value="">医学部</option>
-    <option value="">教育学部</option>
-    <option value="">経済学部</option>
-    <option value="">芸術地域デザイン学部</option>
-    <option value="">農学部</option>
-    <option value="">理工学部</option>
-    <option value="">その他</option>
+    <option value="0">医学部</option>
+    <option value="1">教育学部</option>
+    <option value="2">経済学部</option>
+    <option value="3">芸術地域デザイン学部</option>
+    <option value="4">農学部</option>
+    <option value="5">理工学部</option>
+    <option value="6">その他</option>
     <!-- 学部のオプションを動的に生成する -->
 </select>
 
@@ -82,7 +82,9 @@
     <!-- 学科のオプションを動的に生成する -->
 </select>
 
-<button onclick="search()">検索</button>
+<button onclick="applyFilter()">検索</button>
+<table id="csvTable"></table>
+
 <script src="js/file.js"></script>
 <h2>CSV Table</h2>
 <table id="csvTable"></table>
