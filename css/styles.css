@@ -10884,10 +10884,13 @@ textarea.form-control-lg {
 }
 article{
   width: 76%;
+  margin-top: 20px;
+  margin-left: -50px;
 }
 aside{
+  margin-top: 20px;
   width: 26%;
-  
+  margin-right: -20px;
 }
 .main-contents{
   display: flex;
@@ -10896,10 +10899,30 @@ aside{
 }
 .sub-title{
   font-size: 1.375rem;
+  margin-right: -20px;
   padding:0 8px 8px;
   border-bottom: 2px #0bd solid;
   font-weight: normal;
 }
 a{
   text-decoration: none;
+}
+aside p{
+  padding :12px 10px;
+}
+.sub-menu{
+  margin-bottom: 60px;
+  list-style: none;
+}
+.sub-menu li{
+  border-bottom: 1px #ddd solid;
+
+}
+.sub-menu a{
+  color: #432;
+  padding: 10px;
+  display:block
+}
+.sub-menu a:hover{
+  color:#0bd;
 }
