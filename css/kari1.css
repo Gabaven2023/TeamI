@@ -1,6 +1,6 @@
 .card {
-    width: 23%; /* Adjusted width to fit 4 cards in a row */
-    margin: 10px;
+    width: 31%; /* Adjusted width to fit 4 cards in a row */
+    margin: 5px;
     border: 1px solid #007bff;
     border-radius: 5px;
     background-color: #fff;
@@ -12,7 +12,7 @@
 }
 
 .card-body {
-    padding: 15px;
+    padding: 10px;
 }
 
 p.card-text {
