@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="I班" />
+    <title>お問い合わせ</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/clipboard.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/contact.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="home" class="big-bg">
+        <!-- 以前のコードは省略 -->
+
+        <div class="wrapper">
+            <h2 class="page-title">お問い合わせ</h2>
+            <form id="contactForm">
+                <!-- 以前のフォームコードは省略 -->
+
+                <button type="button" onclick="submitForm()">送信</button>
+
+                <!-- CSVダウンロード用のリンク -->
+                <a href="#" id="downloadLink" style="display: none;" download="お問い合わせデータ.csv">CSVダウンロード</a>
+            </form>
+        </div>
+
+        <!-- 以後のコードは省略 -->
+    </div>
+
+    <!-- 以後のコードは省略 -->
+
+    <script>
+        function submitForm() {
+            // フォームデータの取得
+            var formData = new FormData(document.getElementById('contactForm'));
+
+            // データをCSV形式に変換
+            var csvContent = "お名前,メールアドレス,メッセージ\n";
+            csvContent += '"' + formData.get('your-name') + '","' + formData.get('your-email') + '","' + formData.get('your-message') + '"\n';
+
+            // CSVダウンロード用のリンクにデータを設定
+            var downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            downloadLink.style.display = 'inline'; // リンクを表示
+        }
+    </script>
+</body>
+</html>

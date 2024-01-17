@@ -6,12 +6,15 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    
+    background-image: radial-gradient(#fffafa,#ffb6c1);
+    min-height: 100vh;
 }
 
 h1 {
     text-align:center;
     color: #333;
-    margin-right: 20px; /* フォームとの間隔を追加 */
+    margin-bottom: 10px; /* フォームとの間隔を追加 */
 }
 
 #loginForm {
@@ -49,3 +52,4 @@ button {
 button:hover {
     background-color: #45a049;
 }
+

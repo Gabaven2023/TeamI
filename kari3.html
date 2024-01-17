@@ -4,25 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSV Viewer with Filtering</title>
-    <link href="css/kari.css" rel="stylesheet" />
-</head>
-<body>
-    <input type="file" id="fileInput" onchange="readFile()">
-    
-    <select id="facultySelect" onchange="applyFilter()">
-        <option value="">All Faculties</option>
-        <!-- 学部のオプションはpopulateDropdownOptions関数で動的に生成 -->
-    </select>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <input type="text" id="courseName" oninput="applyFilter()" placeholder="Search Course Name">
-    <input type="text" id="teacherName" oninput="applyFilter()" placeholder="Search Teacher Name">
-
-    <table id="csvTable"></table>
 
     <script>
+
         function readFile() {
             var fileInput = document.getElementById('fileInput');
-            var csvTable = document.getElementById('csvTable');
+            var csvTable = document.getElementById('cardsContainer');
 
             var file = fileInput.files[0];
 
@@ -32,7 +21,7 @@
                 reader.onload = function (e) {
                     var csvData = e.target.result;
                     displayCSV(csvData);
-                    populateDropdownOptions(2, document.getElementById('facultySelect')); // 3は「学部」の列のインデックス
+                    populateDropdownOptions(2, document.getElementById('facultySelect'));
                 };
 
                 reader.readAsText(file);
@@ -43,16 +32,31 @@
 
         function displayCSV(csvData) {
             var rows = csvData.split("\n");
-            var table = document.getElementById("csvTable");
-            table.innerHTML = '';
+            var cardsContainer = document.getElementById("cardsContainer");
+            cardsContainer.innerHTML = '';
 
-            for (var i = 0; i < rows.length; i++) {
+            var headers = rows[0].split(","); // ヘッダーの取得
+
+            for (var i = 1; i < rows.length; i++) {
                 var cells = rows[i].split(",");
-                var row = table.insertRow(-1);
+                var card = document.createElement('div');
+                card.className = 'card';
+
+                var cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
                 for (var j = 0; j < cells.length; j++) {
-                    var cell = row.insertCell(-1);
-                    cell.innerHTML = cells[j];
+                    var cardText = document.createElement('p');
+                    cardText.className = 'card-text';
+
+                    // ヘッダーとセルの内容を結びつける
+                    cardText.innerHTML = headers[j] + ': ' + cells[j];
+                    
+                    cardBody.appendChild(cardText);
                 }
+
+                card.appendChild(cardBody);
+                cardsContainer.appendChild(card);
             }
         }
 
@@ -65,41 +69,40 @@
             var selectedCourseName = courseNameInput.value.toLowerCase();
             var selectedTeacherName = teacherNameInput.value.toLowerCase();
 
-            var table = document.getElementById("csvTable");
-            var rows = table.getElementsByTagName('tr');
+            var cardsContainer = document.getElementById("cardsContainer");
+            var cards = cardsContainer.getElementsByClassName('card');
 
-            for (var i = 1; i < rows.length; i++) {
-                var cells = rows[i].getElementsByTagName('td');
-                var faculty = cells[2].innerHTML.toLowerCase(); // 仮定: 学部は4番目の列
-                var courseName = cells[4].innerHTML.toLowerCase(); // 仮定: 授業名は1番目の列
-                var teacherName = cells[5].innerHTML.toLowerCase(); // 仮定: 先生名は2番目の列
+            for (var i = 0; i < cards.length; i++) {
+                var faculty = cards[i].getElementsByTagName('p')[2].innerText.toLowerCase();
+                var courseName = cards[i].getElementsByTagName('p')[3].innerText.toLowerCase();
+                var teacherName = cards[i].getElementsByTagName('p')[4].innerText.toLowerCase();
 
                 var facultyMatch = selectedFaculty === '' || faculty.includes(selectedFaculty);
                 var courseNameMatch = courseName.includes(selectedCourseName);
                 var teacherNameMatch = teacherName.includes(selectedTeacherName);
 
                 if (facultyMatch && courseNameMatch && teacherNameMatch) {
-                    rows[i].style.display = ''; // フィルタに合致する場合は表示
+                    cards[i].style.display = ''; // フィルタに合致する場合は表示
                 } else {
-                    rows[i].style.display = 'none'; // フィルタに合致しない場合は非表示
+                    cards[i].style.display = 'none'; // フィルタに合致しない場合は非表示
                 }
             }
         }
 
         function populateDropdownOptions(columnIndex, selectElement) {
-            var table = document.getElementById("csvTable");
-            var rows = table.getElementsByTagName('tr');
+            var cardsContainer = document.getElementById("cardsContainer");
+            var cards = cardsContainer.getElementsByClassName('card');
             var values = [];
 
-            for (var i = 1; i < rows.length; i++) {
-                var cell = rows[i].getElementsByTagName('td')[columnIndex];
-                var value = cell ? cell.innerHTML.toLowerCase() : '';
+            for (var i = 0; i < cards.length; i++) {
+                var cardText = cards[i].getElementsByTagName('p')[columnIndex];
+                var value = cardText ? cardText.innerText.toLowerCase() : '';
                 if (!values.includes(value)) {
                     values.push(value);
                 }
             }
 
-            selectElement.innerHTML = '<option value="">All</option>'; // デフォルトのオプション
+            selectElement.innerHTML = '<option value="">All</option>';
             values.forEach(value => {
                 var option = document.createElement('option');
                 option.value = value;
@@ -107,6 +110,7 @@
                 selectElement.appendChild(option);
             });
         }
+    </script>
     </script>
 </body>
 </html>
