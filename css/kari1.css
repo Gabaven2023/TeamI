@@ -1,0 +1,56 @@
+.card {
+    width: 31%; /* Adjusted width to fit 4 cards in a row */
+    margin: 5px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
+}
+
+.card-body {
+    padding: 10px;
+}
+
+p.card-text {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.timestamp {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.faculty {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.rating {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+#cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#fileInput {
+    display: none;
+}
+
+#fileInputLabel {
+    cursor: pointer;
+    color: #007bff;
+}
+
+#fileInputLabel:hover {
+    text-decoration: underline;
+}
