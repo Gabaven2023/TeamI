@@ -244,9 +244,13 @@ sup {
   top: -0.5em;
 }
 
+.btn btn-primary btn-lg {
+  background: #4eb42f;
+}
+
 a {
   color: var(--bs-link-color);
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 a:hover {
   color: var(--bs-link-hover-color);
@@ -3128,7 +3132,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: transparent;
   --bs-btn-box-shadow: none;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 .btn-link:focus-visible {
   color: var(--bs-btn-color);
@@ -3616,6 +3620,12 @@ textarea.form-control-lg {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+}
+
+.nav::after{
+    content: "/";
+    padding-left: 12px; /* li要素のwidthと調整が必要 */
+    color: #ffffff;
 }
 
 .nav-link {
@@ -7998,9 +8008,9 @@ textarea.form-control-lg {
   text-decoration: none !important;
 }
 
-.text-decoration-underline {
+/*.text-decoration-underline {
   text-decoration: underline !important;
-}
+}*/
 
 .text-decoration-line-through {
   text-decoration: line-through !important;
@@ -8282,7 +8292,7 @@ textarea.form-control-lg {
 
 .rounded-bottom {
   border-bottom-right-radius: var(--bs-border-radius) !important;
-  border-bottom-left-radius: var(--bs-border-radius) !important;
+  -left-radius: var(--bs-border-radius) !important;
 }
 
 .rounded-start {
@@ -10823,4 +10833,96 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+/*ここから自分で追加したcss*/
+
+
+.home-content{
+  text-align: center;
+  margin-top: 10%;
+}
+.button{
+  font-size: 1.375rem;
+  background: #0bd;
+  color: #fff;
+  border-radius: 5px;
+  padding: 18px 32px;
+  text-decoration: none;
+}
+.button:hover{
+  background: #0090aa;
+  color: white;
+}
+#home{
+  background-image: radial-gradient(#fffafa,#ffb6c1);
+  min-height: 100vh;
+}
+
+.wrapper{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4%;
+  
+}
+
+#select{
+  background-image: radial-gradient(#fffafa,#ffb6c1);
+  height:280px;
+  
+}
+.page-title{
+  font-size: 5rem;
+  font-family: 'philosopher',serif;
+  text-transform: uppercase;
+  font-weight:normal;
+  margin-top: 70px;
+
+}
+#select .page-title{
+  text-align: center;
+}
+article{
+  width: 76%;
+  margin-top: 20px;
+  margin-left: -50px;
+}
+aside{
+  margin-top: 20px;
+  width: 26%;
+  margin-right: -20px;
+}
+.main-contents{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.sub-title{
+  font-size: 1.375rem;
+  margin-right: -20px;
+  padding:0 8px 8px;
+  border-bottom: 2px #0bd solid;
+  font-weight: normal;
+}
+a{
+  text-decoration: none;
+}
+aside p{
+  padding :12px 10px;
+}
+.sub-menu{
+  margin-bottom: 60px;
+  list-style: none;
+}
+.sub-menu li{
+  border-bottom: 1px #ddd solid;
+
+}
+.sub-menu a{
+  color: #432;
+  padding: 10px;
+  display:block
+}
+.sub-menu a:hover{
+  color:#0bd;
 }
